@@ -1,0 +1,54 @@
+<% layout("/boilerplate") %>
+<body>
+  <h3>Listing Details</h3>
+  <ul>
+    <li><%= data.title %></li>
+    <img src="<%= data.image.url %>" alt="<%= data.title %>" />
+
+    <li><%= data.description %></li>
+    <li>&#8377; <%= data.price.toLocaleString("en-in") %></li>
+    <li><%= data.location %></li>
+    <li><%= data.country %></li>
+    <li><%= data.owner.username %></li>
+  </ul>
+  <% if (currUser && currUser._id.equals(data.owner._id)){ %>
+  <a href="/listings/<%= data.id %>/edit">Edit this Listing</a>
+  <form action="/listings/<%= data.id %>?_method=DELETE" method="post">
+    <button>Delete Listing</button>
+  </form>
+  <%} %>
+
+  <hr />
+  <% if(currUser){ %>
+  <div class="submitReview">
+    <h4>Leave a review</h4>
+    <form action="/listings/<%= data.id %>/review" method="post">
+      <label for="comment">Comment:</label>
+      <textarea
+        name="review[comment]"
+        id="comment"
+        cols="30"
+        rows="10"
+        required
+      ></textarea>
+      <label for="rating">Rating:</label>
+      <input type="range" min="1" max="5" name="review[rating]" id="rating" />
+      <button>Submit Review</button>
+    </form>
+    <hr />
+    <% } %> <% if (data.review.length) { %>
+    <h2>Reviews</h2>
+    <% for (let review of data.review) { %> <%= review.author.username %> => <%=
+    review.comment %> <%=review.rating %>
+    <form
+      action="/listings/<%= data.id %>/review/<%= review._id %>?_method=DELETE"
+      method="post"
+    >
+      <button>Delete</button>
+    </form>
+    <br />
+    <% } %> <% } else { %>
+    <h2>No Reviews</h2>
+    <% } %>
+  </div>
+</body>

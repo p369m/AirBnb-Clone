@@ -1,0 +1,17 @@
+<% layout("/boilerplate") %>
+<body>
+  <p><%= msg %></p>
+  <H1>LOG-IN </H1>
+  <form action="/login" method="post">
+    <input type="text" name="username" id="" placeholder="username" required />
+
+    <input
+      type="password"
+      name="password"
+      id=""
+      placeholder="password"
+      required
+    />
+    <button>SIGN IN</button>
+  </form>
+</body>

@@ -1,0 +1,52 @@
+<% layout("/boilerplate") %>
+<body>
+  <h3>Edit Your Listing Now</h3>
+  <br />
+  <form action="/listings/<%= data._id %>?_method=PUT" method="post">
+    <input
+      type="text"
+      name="data[title]"
+      placeholder="Title"
+      value="<%= data.title %>"
+    />
+    <br />
+    <textarea
+      name="data[description]"
+      cols="30"
+      rows="10"
+      placeholder="description"
+    >
+<%= data.description %></textarea
+    >
+    <br />
+    <input
+      type="text"
+      name="data[image]"
+      placeholder="Link of Property"
+      value="<%= data.image %>"
+    />
+    <br />
+    <input
+      type="number"
+      name="data[price]"
+      placeholder="Price"
+      value="<%= data.price %>"
+    />
+    <br />
+    <input
+      type="text"
+      name="data[location]"
+      placeholder="Location"
+      value="<%= data.location %>"
+    />
+    <br />
+    <input
+      type="text"
+      name="data[country]"
+      placeholder="Country"
+      value="<%= data.country %>"
+    />
+    <br />
+    <button>Save Data</button>
+  </form>
+</body>

@@ -1,0 +1,24 @@
+<% layout("/boilerplate") %>
+<body>
+  <h3>Add New Lsiting By Filling The FORM</h3>
+  <hr />
+  <form action="/listings" method="post" enctype="multipart/form-data">
+    <input type="text" name="data[title]" placeholder="Title" /> <br />
+    <textarea
+      name="data[description]"
+      cols="30"
+      rows="10"
+      placeholder="description"
+    ></textarea>
+    <!-- <br />
+    <input type="text" name="data[image]" placeholder="Link of Property" /> -->
+    <br />
+    UPLOAD LISTING IMG:
+    <input type="file" name="data[image]" placeholder="Image of Property" />
+    <br />
+    <input type="number" name="data[price]" placeholder="Price" /> <br />
+    <input type="text" name="data[location]" placeholder="Location" /> <br />
+    <input type="text" name="data[country]" placeholder="Country" /> <br />
+    <button>ADD</button>
+  </form>
+</body>
